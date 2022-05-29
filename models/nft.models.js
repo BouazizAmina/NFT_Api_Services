@@ -14,13 +14,13 @@ var NFTModelSchema = new Schema({
     },
 
     description:{
-        type: Text,
+        type: String,
         required: true,
     },
 
     owner: {
         type: Schema.ObjectId,
-        ref: 'User'
+        ref: 'Owner'
     },
 
     dateCreation:{

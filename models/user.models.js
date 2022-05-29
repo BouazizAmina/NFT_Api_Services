@@ -1,3 +1,7 @@
+const mongoose = require('mongoose');
+
+var Schema = mongoose.Schema;
+
 var UserModelSchema = new Schema({
     id:{
         type: Number,
@@ -25,4 +29,4 @@ var UserModelSchema = new Schema({
     }
 });
 
-module.exports = User = mongoose.model("User",UserModelSchema);
+module.exports = Owner = mongoose.model("Owner",UserModelSchema);

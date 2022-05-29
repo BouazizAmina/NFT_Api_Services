@@ -53,6 +53,19 @@ module.exports = class Article{
     } catch (error) {
        res.status(500).json({error: error});
     }
- }
+   }
+
+   static async apiGetAllUser(req, res, next){
+      try {
+      const NFT = await NFTService.getAllUser();
+      if(!NFT){
+         res.status(404).json("There are no User published yet!")
+      }
+      res.json(NFT);
+      } catch (error) {
+         res.status(500).json({error: error})
+      }
+
+}
 
 }

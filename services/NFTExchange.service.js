@@ -1,5 +1,5 @@
 const NFT = require("../models/nft.models");
-const User = require("../models/user.models");
+const Owner = require("../models/user.models");
 
 module.exports = class NFTService{
     static async getAllNFTs(){
@@ -15,9 +15,10 @@ module.exports = class NFTService{
         try {
 
             const newNFT = {
-                title: data.title,
-                body: data.body,
-                article_image: data.article_image
+                id:data.id,
+                cID: data.cID,
+                description: data.description,
+                owner: data.owner
             }
            const response = await new NFT(newNFT).save();
            return response;
@@ -49,15 +50,26 @@ module.exports = class NFTService{
         try {
 
             const newUser = {
-                title: data.title,
-                body: data.body,
-                article_image: data.article_image
+                nom: data.nom,
+                prenom: data.prenom,
+                email: data.email,
+                password: data.password
             }
-           const response = await new User(newUser).save();
+           const response = await new Owner(newUser).save();
            return response;
         } catch (error) {
             console.log(error);
         } 
 
+
+    }
+
+    static async getAllUser(){
+        try {
+            const allUsers = await Owner.find();
+            return allUsers;
+        } catch (error) {
+            console.log(`Could not fetch NFTs ${error}`)
+        }
     }
 }
