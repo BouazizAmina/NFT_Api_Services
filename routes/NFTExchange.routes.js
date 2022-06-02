@@ -2,6 +2,10 @@ const  express =  require("express");
 const router = express.Router();
 const NFTctr = require("../controllers/NFTExchange.controller");
 
+
+router.post("/apiLogin", NFTctr.apiLogin);
+
+
 router.post("/apiCreateUser", NFTctr.apiCreateUser);
 router.get("/apiGetAllUser", NFTctr.apiGetAllUser);
 router.get("/apiGetAllNFT", NFTctr.apiGetAllNFT);

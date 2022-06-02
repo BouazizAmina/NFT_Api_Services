@@ -66,6 +66,19 @@ module.exports = class Article{
          res.status(500).json({error: error})
       }
 
-}
+   }
+
+   static async apiLogin(req, res, next){
+      try {
+      const NFT = await NFTService.login(req.body);
+      if(!NFT){
+         res.status(404).json("There are no User with this password !")
+      }
+      res.json(NFT);
+      } catch (error) {
+         res.status(500).json({error: error})
+      }
+
+   }
 
 }

@@ -72,4 +72,13 @@ module.exports = class NFTService{
             console.log(`Could not fetch NFTs ${error}`)
         }
     }
+
+    static async login(data){
+        try {
+            const user = await Owner.find({password:data.password,email:data.email});
+            return user;
+        } catch (error) {
+            console.log(`Could not find user ${error}`)
+        }
+    }
 }
