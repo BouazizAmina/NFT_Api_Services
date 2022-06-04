@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const bodyParser =  require("body-parser");
+const cors = require("cors");
+
 
 const {mongoose} = require("mongoose");
 var uri = "mongodb://localhost:27017/NFTExchange";
@@ -14,6 +16,7 @@ mongoose.connect(uri).then(()=>{
 //     console.log("MongoDB database connection established successfully");
 // });
 
+app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(bodyParser.json());
